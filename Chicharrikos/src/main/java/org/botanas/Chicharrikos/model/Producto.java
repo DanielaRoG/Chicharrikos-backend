@@ -1,5 +1,6 @@
 package org.botanas.Chicharrikos.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,6 +16,7 @@ public class Producto {
     private Long existencia;
 
     @ManyToOne
+    @JsonBackReference // le dice a Jackson: “esto es el reverso, no lo serialices para evitar bucles”.
     @JoinColumn(name = "categoria_id") // se relaciona con la columna categoria_id de la tabla producto
     private Categoria categoria;
 

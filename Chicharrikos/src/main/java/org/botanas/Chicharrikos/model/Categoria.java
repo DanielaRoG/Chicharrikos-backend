@@ -1,5 +1,6 @@
 package org.botanas.Chicharrikos.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -12,8 +13,10 @@ public class Categoria {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "categoria")
-    private List<org.botanas.Chicharrikos.model.Producto> productos;
+
+    @OneToMany(mappedBy = "categoria")  // Bidireccional: hace match con campo "categoria" en Producto
+    @JsonManagedReference //  le dice a Jackson: “esto es el dueño de la relación, inclúyelo al serializar”.
+    private List<Producto> productos;
 
     public Categoria() {}
 
