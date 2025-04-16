@@ -25,3 +25,10 @@ Thumbs.db
 *.swp
 *.log
 *.lock
+
+Archivos de IntelliJ IDEA
+.idea/modules/
+.iml
+
+Archivos de bibliotecas Gradle
+.idea/libraries/Gradle_.xml
