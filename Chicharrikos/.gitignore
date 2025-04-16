@@ -26,9 +26,9 @@ Thumbs.db
 *.log
 *.lock
 
-# Archivos de IntelliJ IDEA
+Archivos de IntelliJ IDEA
 .idea/modules/
-*.iml
+.iml
 
-# Archivos de bibliotecas Gradle
-.idea/libraries/Gradle_*.xml
+Archivos de bibliotecas Gradle
+.idea/libraries/Gradle_.xml
