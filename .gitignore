@@ -1,0 +1,20 @@
+# IntelliJ
+.idea/
+*.iml
+.idea/
+Chicharrikos/build/
+
+
+# Gradle
+.gradle/
+build/
+
+# Archivos generados
+*.class
+*.log
+*.bin
+*.lock
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
