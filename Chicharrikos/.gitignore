@@ -1,0 +1,27 @@
+# Ignorar archivos de configuración del IDE
+.idea/
+*.iml
+*.iws
+
+# Ignorar archivos de build y dependencias
+/build/
+.gradle/
+node_modules/
+target/
+
+# Ignorar archivos generados automáticamente
+*.class
+*.jar
+*.war
+*.ear
+
+# Archivos de sistema operativo (Windows y macOS)
+Thumbs.db
+.DS_Store
+
+# Archivos temporales y de compilación
+*.tmp
+*.bak
+*.swp
+*.log
+*.lock
