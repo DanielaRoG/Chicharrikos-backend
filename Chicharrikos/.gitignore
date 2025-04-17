@@ -3,6 +3,13 @@
 *.iml
 *.iws
 
+
+backup-idea/
+temp-idea/
+Chicharrikos/out/
+Chicharrikos/.gradle/
+
+
 # Ignorar archivos de build y dependencias
 /build/
 .gradle/
