@@ -1,10 +1,11 @@
 package org.botanas.Chicharrikos.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
-
 
 @Entity
 @Table(name = "cliente")
@@ -14,10 +15,19 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idcliente;
 
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
+
+    @NotBlank(message = "El correo es obligatorio")
+    @Email(message = "El correo debe ser válido")
     private String correo;
+
     private String direccion;
+
+    @Size(min = 8, message = "El teléfono debe tener al menos 8 dígitos")
     private String telefono;
+
+    @NotBlank(message = "La contraseña es obligatoria")
     private String contraseña;
 
     public Cliente() {
@@ -96,7 +106,7 @@ public class Cliente {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Cliente cliente = (Cliente) o;
-        return Objects.equals(idcliente, cliente.idcliente) && Objects.equals(nombre, cliente.nombre) && Objects.equals(correo, cliente.correo) && Objects.equals(direccion, cliente.direccion) && Objects.equals(telefono, cliente.telefono) && Objects.equals(contraseña, cliente.contraseña);
+        return   Objects.equals(idcliente, cliente.idcliente) && Objects.equals(nombre, cliente.nombre) && Objects.equals(correo, cliente.correo) && Objects.equals(direccion, cliente.direccion) && Objects.equals(telefono, cliente.telefono) && Objects.equals(contraseña, cliente.contraseña);
     }
 
     @Override

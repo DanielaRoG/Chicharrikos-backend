@@ -1,5 +1,6 @@
 package org.botanas.Chicharrikos.controller;
 
+import jakarta.validation.Valid;
 import org.botanas.Chicharrikos.exception.ClienteNotFoundException;
 import org.botanas.Chicharrikos.model.Cliente;
 import org.botanas.Chicharrikos.service.ClienteService;
@@ -29,7 +30,7 @@ public class ClienteController {
     // Si existe informacion lanzo status 409
     // Si no existe informacion, creo el usuario y lanzo un status 201
     @PostMapping
-    public ResponseEntity<Cliente> createUser(@RequestBody Cliente newCliente){
+    public ResponseEntity<Cliente> createUser(@Valid @RequestBody Cliente newCliente) {
         if(clienteService.findByCorreo(newCliente.getCorreo()) != null){
             return new ResponseEntity<>(HttpStatus.CONFLICT); //409
         }
@@ -60,8 +61,8 @@ public class ClienteController {
     // Metodo para updateUser (200 y 404)
     @PutMapping("/actualizar-cliente/{id}")
     public ResponseEntity<Cliente> updateCliente(
-            @RequestBody Cliente cliente,
-            @PathVariable Integer id) {
+            @PathVariable Integer id,
+            @Valid @RequestBody Cliente cliente) {
         try {
             return ResponseEntity.ok(clienteService.updateCliente(cliente, id));
         } catch (ClienteNotFoundException e){
