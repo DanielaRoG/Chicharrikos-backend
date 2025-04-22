@@ -34,7 +34,7 @@ public class ProductoController {
     @PutMapping("/{id}")
     public Producto updateProducto(@PathVariable Long id, @RequestBody Producto updatedProducto) {
         return productoRepository.findById(id).map(producto -> {
-            producto.setDescripcion(updatedProducto.getDescripcion());
+            producto.setNombre(updatedProducto.getNombre());
             producto.setPrecio(updatedProducto.getPrecio());
             producto.setExistencia(updatedProducto.getExistencia());
             producto.setCategoria(updatedProducto.getCategoria());

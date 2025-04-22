@@ -7,90 +7,90 @@ import java.util.Objects;
 
 
 @Entity
-    @Table(name = "cliente")
-    public class Cliente {
+@Table(name = "cliente")
+public class Cliente {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer idcliente;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idcliente;
 
-        private String nombre;
-        private String correo;
-        private String direccion;
-        private String telefono;
-        private String contraseña;
+    private String nombre;
+    private String correo;
+    private String direccion;
+    private String telefono;
+    private String contraseña;
 
-        public Cliente() {
-        }
+    public Cliente() {
+    }
 
-        public Cliente(Integer idcliente, String nombre, String correo, String direccion, String telefono, String contraseña) {
-            this.idcliente = idcliente;
-            this.nombre = nombre;
-            this.correo = correo;
-            this.direccion = direccion;
-            this.telefono = telefono;
-            this.contraseña = contraseña;
-        }
+    public Cliente(Integer idcliente, String nombre, String correo, String direccion, String telefono, String contraseña) {
+        this.idcliente = idcliente;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.contraseña = contraseña;
+    }
 
-        public Integer getIdcliente() {
-            return idcliente;
-        }
+    public Integer getIdcliente() {
+        return idcliente;
+    }
 
-        public void setIdcliente(Integer idcliente) {
-            this.idcliente = idcliente;
-        }
+    public void setIdcliente(Integer idcliente) {
+        this.idcliente = idcliente;
+    }
 
-        public String getNombre() {
-            return nombre;
-        }
+    public String getNombre() {
+        return nombre;
+    }
 
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-        public String getCorreo() {
-            return correo;
-        }
+    public String getCorreo() {
+        return correo;
+    }
 
-        public void setCorreo(String correo) {
-            this.correo = correo;
-        }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-        public String getDireccion() {
-            return direccion;
-        }
+    public String getDireccion() {
+        return direccion;
+    }
 
-        public void setDireccion(String direccion) {
-            this.direccion = direccion;
-        }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
-        public String getTelefono() {
-            return telefono;
-        }
+    public String getTelefono() {
+        return telefono;
+    }
 
-        public void setTelefono(String telefono) {
-            this.telefono = telefono;
-        }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-        public String getContraseña() {
-            return contraseña;
-        }
+    public String getContraseña() {
+        return contraseña;
+    }
 
-        public void setContraseña(String contraseña) {
-            this.contraseña = contraseña;
-        }
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
 
-        @Override
-        public String toString() {
-            return "Cliente{" +
-                    "idcliente=" + idcliente +
-                    ", nombre='" + nombre + '\'' +
-                    ", correo='" + correo + '\'' +
-                    ", direccion='" + direccion + '\'' +
-                    ", telefono='" + telefono + '\'' +
-                    ", contraseña='" + contraseña + '\'' +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idcliente=" + idcliente +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -104,6 +104,5 @@ import java.util.Objects;
         return Objects.hash(idcliente, nombre, correo, direccion, telefono, contraseña);
     }
 }
-
 
 

@@ -11,7 +11,7 @@ public class Producto {
 
     @Id
     private Long idproducto;
-    private String descripcion;
+    private String nombre;
     private Double precio;
     private Long existencia;
 
@@ -25,9 +25,9 @@ public class Producto {
     }
 
     //Contructor
-    public Producto(Long idproducto, String descripcion, Double precio, Long existencia, Long categoria_id) {
+    public Producto(Long idproducto, String nombre, Double precio, Long existencia, Categoria categoria) {
         this.idproducto = idproducto;
-        this.descripcion = descripcion;
+        this.nombre = nombre;
         this.precio = precio;
         this.existencia = existencia;
         this.categoria = categoria;
@@ -43,12 +43,12 @@ public class Producto {
         this.idproducto = idproducto;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Double getPrecio() {
@@ -82,7 +82,7 @@ public class Producto {
     public String toString() {
         return "Producto{" +
                 "idproducto=" + idproducto +
-                ", descripcion='" + descripcion + '\'' +
+                ", descripcion='" + nombre + '\'' +
                 ", precio=" + precio +
                 ", existencia=" + existencia +
                 ", categoria=" + categoria +
@@ -92,11 +92,11 @@ public class Producto {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Producto producto)) return false;
-        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(descripcion, producto.descripcion) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(categoria, producto.categoria);
+        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(nombre, producto.nombre) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(categoria, producto.categoria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idproducto, descripcion, precio, existencia, categoria);
+        return Objects.hash(idproducto, nombre, precio, existencia, categoria);
     }
 }// class producto
