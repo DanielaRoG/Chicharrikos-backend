@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Chicharrikos-backend.iml" filepath="$PROJECT_DIR$/.idea/Chicharrikos-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Chicharrikos.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Chicharrikos.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Chicharrikos.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Chicharrikos.test.iml" />
     </modules>
   </component>
 </project>
