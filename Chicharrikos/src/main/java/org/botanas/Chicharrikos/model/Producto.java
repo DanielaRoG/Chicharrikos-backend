@@ -10,29 +10,30 @@ import java.util.Objects;
 public class Producto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idproducto;
     private String nombre;
     private Double precio;
     private Long existencia;
-    private String url;
+    private String imageUrl;
 
     @ManyToOne
     @JsonBackReference // le dice a Jackson: “esto es el reverso, no lo serialices para evitar bucles”.
-    @JoinColumn(name = "id_categoria_id") // se relaciona con la columna categoria_id de la tabla producto
+    @JoinColumn(name = "categoria_id") // se relaciona con la columna categoria_id de la tabla producto
     private Categoria categoria;
 
     // constructor vacio para JBA
     public Producto(){
     }
 
-    //Contructor
-    public Producto(Long idproducto, String nombre, Double precio, Long existencia, Categoria categoria, String url) {
+    // Constructor incluyendo imageUrl
+    public Producto(Long idproducto, String nombre, Double precio, Long existencia, String imageUrl, Categoria categoria) {
         this.idproducto = idproducto;
         this.nombre = nombre;
         this.precio = precio;
         this.existencia = existencia;
+        this.imageUrl = imageUrl;
         this.categoria = categoria;
-        this.url = url;
     }
 
     // Getter and Setter
@@ -69,6 +70,14 @@ public class Producto {
         this.existencia = existencia;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -77,32 +86,30 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public String getUrl() { return url; }
-
-    public void setUrl(String url) { this.url = url; }
-
     //Tostring
+
 
     @Override
     public String toString() {
         return "Producto{" +
                 "idproducto=" + idproducto +
-                ", descripcion='" + nombre + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", precio=" + precio +
                 ", existencia=" + existencia +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", categoria=" + categoria +
-                ", url=" + url+
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Producto producto)) return false;
-        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(nombre, producto.nombre) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(categoria, producto.categoria) && Objects.equals(url, producto.url);
+        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(nombre, producto.nombre) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(imageUrl, producto.imageUrl) && Objects.equals(categoria, producto.categoria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idproducto, nombre, precio, existencia, categoria, url);
+        return Objects.hash(idproducto, nombre, precio, existencia, imageUrl, categoria);
     }
 }// class producto

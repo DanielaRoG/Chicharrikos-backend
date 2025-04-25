@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5501") // Permite peticiones desde tu frontend
 @RequestMapping("/api/Chicharrikos/cliente")
 @CrossOrigin(origins = "*")
 public class ClienteController {
@@ -80,6 +81,16 @@ public class ClienteController {
             return ResponseEntity.notFound().build();
         }
 
+    }
+
+    // Metodo para recuperar por email
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Cliente> getByCorreo(@PathVariable String correo){
+        Cliente clienteByCorreo = clienteService.findByCorreo(correo);
+        if (clienteByCorreo == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(clienteByCorreo);
     }
 
 }
