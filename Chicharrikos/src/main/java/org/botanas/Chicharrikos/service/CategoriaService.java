@@ -5,11 +5,14 @@ import org.botanas.Chicharrikos.model.Categoria;
 import org.botanas.Chicharrikos.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class CategoriaService {
+
     private final CategoriaRepository categoriaRepository;
 
     @Autowired
@@ -27,19 +30,7 @@ public class CategoriaService {
     }
 
     public Categoria createCategoria(Categoria nuevaCategoria) {
-        if (categoriaRepository.findByNombre(nuevaCategoria.getNombre()) != null) {
-            // Considera lanzar una excepción específica para categoría existente
-            throw new RuntimeException("Ya existe una categoría con este nombre.");
-        }
         return categoriaRepository.save(nuevaCategoria);
-    }
-
-    public void deleteCategoria(Long id) {
-        if (categoriaRepository.existsById(id)) {
-            categoriaRepository.deleteById(id);
-        } else {
-            throw new CategoriaNotFoundException(id);
-        }
     }
 
     public Categoria updateCategoria(Long id, Categoria categoriaActualizada) {
@@ -49,5 +40,13 @@ public class CategoriaService {
                     return categoriaRepository.save(categoria);
                 })
                 .orElseThrow(() -> new CategoriaNotFoundException(id));
+    }
+
+    public void deleteCategoria(Long id) {
+        if (categoriaRepository.existsById(id)) {
+            categoriaRepository.deleteById(id);
+        } else {
+            throw new CategoriaNotFoundException(id);
+        }
     }
 }
