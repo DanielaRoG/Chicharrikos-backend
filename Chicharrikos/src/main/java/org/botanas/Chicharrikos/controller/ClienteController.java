@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Chicharrikos/cliente")
+@CrossOrigin(origins = "*")
 public class ClienteController {
     private final ClienteService clienteService;
 
@@ -45,6 +46,16 @@ public class ClienteController {
         } catch (ClienteNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    // Metodo para encontrar un usuario por email
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Cliente> getByCorreo(@PathVariable String correo){
+        Cliente clienteByCorreo = clienteService.findByCorreo(correo);
+        if (clienteByCorreo == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(clienteByCorreo);
     }
 
     // Metodo para eliminar usuario por id (204 y 404)
