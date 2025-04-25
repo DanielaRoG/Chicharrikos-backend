@@ -5,13 +5,13 @@ import org.botanas.Chicharrikos.service.ClienteService; // O un AuthService dedi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/Chicharrikos/auth")
+@CrossOrigin(origins = "http://127.0.0.1:5501") // Permite desde ambos orígenes
 public class AuthController {
 
     private final ClienteService clienteService; // Considera un AuthService
@@ -33,10 +33,13 @@ public class AuthController {
     public ResponseEntity<?> loginUsuario(@RequestBody Cliente clienteLogin) {
         Cliente cliente = clienteService.findByCorreo(clienteLogin.getCorreo());
         if (cliente != null && cliente.getContraseña().equals(clienteLogin.getContraseña())) {
-            // Aquí podrías generar un token JWT o iniciar una sesión
-            return ResponseEntity.ok("Login exitoso");
+            return ResponseEntity.ok(new HashMap<String, String>() {{
+                put("mensaje", "Inicio de sesión exitoso");
+            }});
         } else {
-            return new ResponseEntity<>("Credenciales inválidas", HttpStatus.UNAUTHORIZED); // 401
+            return new ResponseEntity<>(new HashMap<String, String>() {{
+                put("mensaje", "Credenciales inválidas");
+            }}, HttpStatus.UNAUTHORIZED);
         }
     }
-}
+    }
