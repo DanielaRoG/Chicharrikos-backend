@@ -39,4 +39,6 @@ public class AuthController {
             return new ResponseEntity<>("Credenciales inválidas", HttpStatus.UNAUTHORIZED); // 401
         }
     }
+
+    // otro metodo post
 }

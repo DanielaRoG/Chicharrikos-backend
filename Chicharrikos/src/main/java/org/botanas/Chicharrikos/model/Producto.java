@@ -14,10 +14,11 @@ public class Producto {
     private String nombre;
     private Double precio;
     private Long existencia;
+    private String url;
 
     @ManyToOne
     @JsonBackReference // le dice a Jackson: “esto es el reverso, no lo serialices para evitar bucles”.
-    @JoinColumn(name = "categoria_id") // se relaciona con la columna categoria_id de la tabla producto
+    @JoinColumn(name = "id_categoria_id") // se relaciona con la columna categoria_id de la tabla producto
     private Categoria categoria;
 
     // constructor vacio para JBA
@@ -25,13 +26,16 @@ public class Producto {
     }
 
     //Contructor
-    public Producto(Long idproducto, String nombre, Double precio, Long existencia, Categoria categoria) {
+
+    public Producto(Long idproducto, String nombre, Double precio, Long existencia, String url, Categoria categoria) {
         this.idproducto = idproducto;
         this.nombre = nombre;
         this.precio = precio;
         this.existencia = existencia;
+        this.url = url;
         this.categoria = categoria;
     }
+
 
     // Getter and Setter
 
@@ -75,6 +79,14 @@ public class Producto {
         this.categoria = categoria;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     //Tostring
 
 
@@ -82,21 +94,23 @@ public class Producto {
     public String toString() {
         return "Producto{" +
                 "idproducto=" + idproducto +
-                ", descripcion='" + nombre + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", precio=" + precio +
                 ", existencia=" + existencia +
+                ", url='" + url + '\'' +
                 ", categoria=" + categoria +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Producto producto)) return false;
-        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(nombre, producto.nombre) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(categoria, producto.categoria);
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return Objects.equals(idproducto, producto.idproducto) && Objects.equals(nombre, producto.nombre) && Objects.equals(precio, producto.precio) && Objects.equals(existencia, producto.existencia) && Objects.equals(url, producto.url) && Objects.equals(categoria, producto.categoria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idproducto, nombre, precio, existencia, categoria);
+        return Objects.hash(idproducto, nombre, precio, existencia, url, categoria);
     }
 }// class producto
